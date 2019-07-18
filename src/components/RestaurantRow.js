@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback, Image } from 'react-native'
-
+import Icon from 'react-native-vector-icons/FontAwesome'
+import Stars from 'components/Stars'
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row'
@@ -39,7 +40,15 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ddd',
         borderRadius: 4
-    }
+    },
+    stars: {
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        padding: 5,
+        minWidth: 50,
+    },
 })
 
 export default class RestaurantRow extends Component {
@@ -67,10 +76,8 @@ export default class RestaurantRow extends Component {
                 { backgroundColor: index % 2 === 0 ? 'white' : '#F5F5F5' }
             ]}>
                 <View style={styles.row}>
-                    <View style={styles.edges}>
-                        <Text>
-                            {index + 1}
-                        </Text>
+                    <View style={styles.stars}>
+                        <Stars rating={place.rating} />
                     </View>
                     <View style={styles.nameAddress}>
                         <Text>{place.name}</Text>
