@@ -32,6 +32,10 @@ import PizzaImage from 'images/pizza.png'
 
 export default class RestaurantList extends Component {
   
+    static navigationOptions = {
+      header: null
+    }
+
     state = {
       search: null,
       restaurants: []
@@ -46,6 +50,7 @@ export default class RestaurantList extends Component {
       return (
       <View style={{
         flex: 1,
+        backgroundColor: '#FFFFFF'
       }}>
         <View style={{
           marginTop: 40,
@@ -70,7 +75,11 @@ export default class RestaurantList extends Component {
             })
           }
           renderItem={({ item, index }) =>
-            <RestaurantRow place={item} index={index} />
+            <RestaurantRow 
+              place={item} 
+              index={index}
+              navigation={this.props.navigation}
+            />
           }
           keyExtractor={item => item.name}
           initialNumToRender={16}
