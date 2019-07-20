@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Stars from 'components/Stars'
+
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row'
@@ -70,7 +71,7 @@ export default class RestaurantRow extends Component {
             index
         } = this.props
 
-        console.log("place", place)
+        console.log("place", place);
 
         return (
             <View key={place.name} style={[
