@@ -6,7 +6,8 @@ import {
     TouchableOpacity,
     StyleSheet,
     TextInput,
-    ActivityIndicator
+    ActivityIndicator,
+    AsyncStorage
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -25,8 +26,22 @@ export default class AddReview extends Component {
         this.props.navigation.goBack()
     }
 
+    componentDidMount() {
+        AsyncStorage.getItem("reviewer_name").then(name => {
+            if(name !== null && name !== undefined) {
+                this.setState({ name })
+            }
+        })
+    }
+
     submitReview = () => {
         this.setState({ submitting: true })
+
+        // if(this.state.name !== null && this.state.name !== undefined){
+        //     AsyncStorage.setItem("reviewer_name", this.state.name)
+        // }
+
+        AsyncStorage.removeItem("reviewer_name")
 
         fetch('http://localhost:3000/review', {
             method: 'POST',
